@@ -28,8 +28,9 @@ function findSteps(id) {
 //     on sc.id= st.scheme_id
 //     order by sc.scheme_name, st.step_number;
 
-function add() {
-    return console.log('wired')
+async function add(scheme) {
+    const [id] = await db('schemes').insert(scheme)
+    return db('schemes').where({id: id}).first()
 }
 function update() {
     return console.log('wired')
