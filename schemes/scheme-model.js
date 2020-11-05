@@ -29,7 +29,7 @@ function findSteps(id) {
 // from Schemes as sc
 // join Steps as st
 //     on sc.id= st.scheme_id
-//     order by sc.scheme_name, st.step_number;
+//     order by st.step_number;
 
 
 async function add(scheme) {
@@ -41,7 +41,7 @@ async function update(id, changes) {
     const count = await db('schemes').where({id}).update(changes)
     if (count) {
         console.log("count", count)
-        return await db('schemes').where({id}).first()
+        return db('schemes').where({id}).first()
     } else {
         return Promise.resolve(null)
     }
